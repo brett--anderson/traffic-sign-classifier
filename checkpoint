@@ -1,3 +1,2 @@
 model_checkpoint_path: "traffic"
-all_model_checkpoint_paths: "lenet"
 all_model_checkpoint_paths: "traffic"
