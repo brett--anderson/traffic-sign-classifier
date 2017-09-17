@@ -71,7 +71,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         wget
 
 RUN wget https://d17h27t6h515a5.cloudfront.net/topher/2017/February/5898cd6f_traffic-signs-data/traffic-signs-data.zip && \
-    unzip traffic-signs-data.zip && cp *.p /opt/traffic_sign_predictor/data/ && \
+    unzip traffic-signs-data.zip && cp *.p /opt/traffic_sign_predictor/traffic-signs-data/ && \
     rm *.p && \
     rm *.zip
 
