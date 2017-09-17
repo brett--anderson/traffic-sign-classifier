@@ -69,7 +69,7 @@ COPY signnames.csv /opt/traffic_sign_predictor/
 RUN apt install unzip
 RUN wget https://d17h27t6h515a5.cloudfront.net/topher/2017/February/5898cd6f_traffic-signs-data/traffic-signs-data.zip && \
     unzip traffic-signs-data.zip && cp *.p /opt/traffic_sign_predictor/data/ && \
-    rm *.p &&
+    rm *.p && \
     rm *.zip
 
 
