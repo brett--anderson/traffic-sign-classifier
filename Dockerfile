@@ -63,9 +63,15 @@ RUN mkdir /opt/traffic_sign_predictor
 RUN mkdir /opt/traffic_sign_predictor/data
 RUN mkdir /opt/traffic_sign_predictor/traffic-signs-data/
 
-COPY traffic-signs-data /opt/traffic_sign_predictor/traffic-signs-data/
 COPY Traffic_Sign_Classifier.ipynb /opt/traffic_sign_predictor/
 COPY signnames.csv /opt/traffic_sign_predictor/
+
+RUN apt install unzip
+RUN wget https://d17h27t6h515a5.cloudfront.net/topher/2017/February/5898cd6f_traffic-signs-data/traffic-signs-data.zip && \
+    unzip traffic-signs-data.zip && cp *.p /opt/traffic_sign_predictor/data/ && \
+    rm *.p &&
+    rm *.zip
+
 
 COPY run.sh /opt/
 RUN chmod +x /opt/run.sh
