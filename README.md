@@ -1,4 +1,4 @@
-#**Traffic Sign Recognition** 
+# Traffic Sign Recognition
 ---
 [//]: # (Image References)
 
@@ -12,19 +12,11 @@
 [image8]: ./examples/sign_5.png "Traffic Sign 5"
 [image9]: ./examples/actual_test_images.png "Scaled Signs"
 
-## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
+Here is a link to my [project code](https://github.com/brett--anderson/traffic-sign-classifier/blob/master/Traffic_Sign_Classifier.ipynb)
 
----
-###Writeup / README
+### Data Set Summary & Exploration
 
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
-
-You're reading it! and here is a link to my [project code](https://github.com/brett--anderson/traffic-sign-classifier/blob/master/Traffic_Sign_Classifier.ipynb)
-
-###Data Set Summary & Exploration
-
-####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+#### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
 
 I used the pandas library to calculate summary statistics of the traffic
 signs data set:
@@ -35,15 +27,15 @@ signs data set:
 * The shape of a traffic sign image is (32, 32, 3)
 * The number of unique classes/labels in the data set is 43
 
-####2. Include an exploratory visualization of the dataset.
+#### 2. Include an exploratory visualization of the dataset.
 
 Here is an exploratory visualisation of the data set. It is a bar chart showing how many examples of each class there is in the training validation and test sets. The distributions show that there is an over-representation of some classes that would lead to a bias of classifying new examples into the higher represented classes. However, since the biased representation is almost exactly the same across the training, validation and test sets obtaining a good test accuracy is possible. This bias may be a problem when generalising to downloaded images obtained from the internet.
 
 ![distribution of classes in training, validation and test sets][image1]
 
-###Design and Test a Model Architecture
+### Design and Test a Model Architecture
 
-####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
 As a first step, I decided to convert the images from RGB to YUV and then just used the Y channel for my images. The YUV scale skews the colours to better approximate human perception of colours and the Y channel encodes the brightness / intensity of the colours. I did this as I had better results and I've found in other projects that trying to get the machine to see colours the way humans do really helps. This makes sense for road signs since they user colours like yellow which humans are easily able to differentiate.
 
@@ -68,7 +60,7 @@ I performed the following augmentations:
 
 I was careful not to completely flip the images during augmentation as a 'no right turn' could become a 'no left turn' and would then have the wrong label in the training data.
 
-####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+#### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
 My final model consisted of the following layers:
 
@@ -110,7 +102,7 @@ I also included three drop out layers to force the network to be robust and not 
 
 I also included an L2 regularizer to stop the weights from getting too large, again to keep the network robust. I found that this lowered my accuracy slightly. However by accident I left a single convolution layer out of the formula (the 6th conv layer, or the second half of the third conv 'block'). This gave me the best results of all so I  left it this way. I could be over fitting my data whereby my actions are influenced by examining the final test score too many times and thereby manually introducing bias by tweaking such a parameter.
 
-####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+#### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
 To train the model, I used:
  - Optimizer: Adam
@@ -124,7 +116,7 @@ To train the model, I used:
 
 The keep probabilities were all set to 1.0 while testing the model since I didn't want to degrade the test images by dropping signals during testing. I also set the L2 loss multiplier to 0 while training as I didn't want to penalise my test and validation results based on regularisation. I also had to process the images for each batch so that they were in the form required by the augmentation library (which only performs the augmentation as needed to avoid using too much memory). This meant that I then had to reset the images back to the ideal range for the optimiser after augmentation had occurred. 
 
-####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+#### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
 * training set accuracy of 0.999
@@ -142,9 +134,9 @@ If an iterative approach was chosen:
 * I experimented with different learning rates, optimizers, batch sizes and epochs while working with the LetNet architecture and found the values used to be the best.
 * I then adjusted the number of epochs, keep probabilities and L2 regularizer factor to improve the validation score.
 
-###Test a Model on New Images
+### Test a Model on New Images
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+#### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 Here are five German traffic signs that I found on the web:
 
@@ -158,7 +150,7 @@ Here are five German traffic signs that I found on the web:
  5. The fifth sign has a lot of scratches on it and the symbol is quite detailed, which makes it hard to classify when the image is resized to 32x32 pixels.
 
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
 
@@ -175,7 +167,7 @@ The model was able to correctly guess 4 of the 5 traffic signs, which gives an a
 
 ![alt text][image9]
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
@@ -188,8 +180,3 @@ For all the images the model was > 99% sure of it's prediction, expect the one i
 | .10                   | Stop                                          |
 | .10                   | Speed Limit 50km/h (actual)                   |
 | .06                   | No Passing                                    |
-
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
-
-
