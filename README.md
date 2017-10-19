@@ -2,7 +2,7 @@
 ---
 [//]: # (Image References)
 
-[image1]: ./examples/data_distribution.jpg "Class Distribution"
+[image1]: ./examples/data_distribution.png "Class Distribution"
 [image2]: ./examples/pre-processed.png "Preprocessed"
 [image3]: ./examples/augmented.png "Augmented Images"
 [image4]: ./examples/sign_1.png "Traffic Sign 1"
