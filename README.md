@@ -171,12 +171,12 @@ The model was able to correctly guess 4 of the 5 traffic signs, which gives an a
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
-For all the images the model was > 99% sure of it's prediction, expect the one it got wrong. The results for this image are shown below
+For all the images the model was > 99% sure of it's prediction, except the one it got wrong. The results for this image are shown below
 
 | Probability           |     Prediction                                | 
 |:---------------------:|:---------------------------------------------:| 
-| .20                   | Speed Limit 70km/h (actual)                   | 
+| .20                   | Speed Limit 70km/h (predicted)                | 
 | .17                   | Speed Limit 30km/h (actual)                   |
 | .10                   | Stop                                          |
-| .10                   | Speed Limit 50km/h (actual)                   |
+| .10                   | Speed Limit 50km/h                            |
 | .06                   | No Passing                                    |
