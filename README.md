@@ -5,11 +5,11 @@
 [image1]: ./examples/data_distribution.png "Class Distribution"
 [image2]: ./examples/pre-processed.png "Preprocessed"
 [image3]: ./examples/augmented.png "Augmented Images"
-[image4]: ./examples/sign_1.png "Traffic Sign 1"
-[image5]: ./examples/sign_2.png "Traffic Sign 2"
-[image6]: ./examples/sign_3.png "Traffic Sign 3"
-[image7]: ./examples/sign_4.png "Traffic Sign 4"
-[image8]: ./examples/sign_5.png "Traffic Sign 5"
+[image4]: ./examples/sign_1.jpg "Traffic Sign 1"
+[image5]: ./examples/sign_2.jpg "Traffic Sign 2"
+[image6]: ./examples/sign_3.jpg "Traffic Sign 3"
+[image7]: ./examples/sign_4.jpg "Traffic Sign 4"
+[image8]: ./examples/sign_5.jpg "Traffic Sign 5"
 [image9]: ./examples/actual_test_images.png "Scaled Signs"
 
 Here is a link to my [project code](https://github.com/brett--anderson/traffic-sign-classifier/blob/master/Traffic_Sign_Classifier.ipynb)
@@ -140,8 +140,8 @@ If an iterative approach was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![traffic sign 1][image4] ![traffic sign 2][image5] ![traffic sign 3][image6] 
+![traffic sign 4][image7] ![traffic sign 5][image8]
 
  1. The first image should be easy to classify as it is very clear and without artefacts
  2. The second image has clouds in the background which might confuse the model
@@ -165,7 +165,7 @@ Here are the results of the prediction:
 
 The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This is a lot lower than the 98% accuracy on the provided test data. But it's also a much smaller sample size. Looking at the softmax probabilities below it also narrowly missed the correct prediction by a couple of percent. I've included the scaled normalized images below and you can see how the model would struggle to tell the difference between 70 and 30km/h. That said, this probably isn't an excuse that would hold up in court when driving 40km over the speed limit!
 
-![alt text][image9]
+![processed images][image9]
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
